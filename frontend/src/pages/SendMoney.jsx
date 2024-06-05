@@ -15,7 +15,7 @@ export const SendMoney = () => {
         try {
             setLoading(true);
             const res = await axios.post(
-                "http://localhost:5000/api/v1/account/transfer",
+                "https://paytm-mern-virid.vercel.app/api/v1/account/transfer",
                 {
                     to: id,
                     amount

@@ -12,7 +12,7 @@ export const Dashboard = () => {
     const fetchBalance = async () => {
         try {
             const token = localStorage.getItem('token')
-            const response = await axios.get("http://localhost:5000/api/v1/account/balance", {
+            const response = await axios.get("https://paytm-mern-virid.vercel.app/api/v1/account/balance", {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'

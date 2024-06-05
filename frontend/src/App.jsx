@@ -2,6 +2,7 @@ import {
   BrowserRouter,
   Route,
   Routes,
+  Navigate
 } from "react-router-dom";
 import { Signin } from "./pages/Signin";
 import { Signup } from "./pages/Signup";
@@ -15,6 +16,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Navigate to="/dashboard" />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/dashboard" element={
@@ -27,9 +29,8 @@ function App() {
             </Protected>} />
         </Routes>
       </BrowserRouter>
-
     </>
   )
 }
 
-export default App
+export default App;
