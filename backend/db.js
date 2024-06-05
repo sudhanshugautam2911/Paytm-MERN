@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
+const { MONGO_URI } = require('./config');
+// const dbUri = process.env.MONGO_URI;
 
-const dbUri = process.env.MONGO_URI;
-
-mongoose
-  .connect(dbUri, {
+mongoose  
+  .connect(MONGO_URI, {
     useNewUrlParser: true,
-    useNewUnifiedTopology: true,
+    useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("Database is connected to PORT");
+    console.log("Database connected!");
   })
   .catch((error) => {
     console.log("Some error: ", error);
@@ -22,8 +22,23 @@ const userSchema = mongoose.Schema({
     lastName: String,
 }) 
 
+const accountSchema = mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  balance: {
+    type: Number,
+    required: true
+  }
+})
+
 const User = mongoose.model("User", userSchema);
+const Account = mongoose.model("Account", accountSchema);
+
 
 module.exports = {
-    User
+    User,
+    Account
 }
