@@ -7,10 +7,13 @@ app.use(cors());
 app.use(express.json());  // To support the JSON body in post requests
 
 
-const PORT = process.env.PORT || "5000";
 
 app.use('/api/v1', rootRouter);
 
-app.listen(PORT, (req, res) => {
-    console.log("Server is Running at Port:", PORT);
+app.use('/', (req, res)=> {
+    res.send("Server is running");
+})
+
+app.listen(5000, (req, res) => {
+    console.log("Server is Running at Port 5000");
 })
